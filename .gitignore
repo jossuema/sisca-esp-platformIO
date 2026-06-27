@@ -1,0 +1,13 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# Editores
+.vscode/
+*.code-workspace
+
+# Sistema
+.DS_Store
+*.swp
+*.log
