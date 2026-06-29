@@ -11,3 +11,6 @@
 .DS_Store
 *.swp
 *.log
+
+# Secretos por dispositivo (no versionar) — usar config.h.example como plantilla
+include/config.h
