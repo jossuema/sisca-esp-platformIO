@@ -1,0 +1,52 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// ============================================================================
+//  PLANTILLA DE CONFIGURACIÓN — copia este archivo a include/config.h y rellena.
+//
+//      cp include/config.h.example include/config.h
+//
+//  include/config.h está en .gitignore: NO se versiona porque contiene secretos
+//  (credenciales WiFi y PKEY).
+// ============================================================================
+
+// --- Credenciales WiFi (SECRETO) ---
+#define WIFI_SSID     "TU_SSID"
+#define WIFI_PASS     "TU_PASSWORD_WIFI"
+
+// --- API de verificación de tokens ---
+#define API_URL       "https://www.utmachala.edu.ec/querys/consulta.php"
+#define API_TIMEOUT   5000  // ms
+// Endpoint 4 del contrato SISCA: verifica un token previamente generado por el móvil.
+#define API_FUNCTION  "valtokenesp"
+// Clave de autenticación de la API (SECRETO compartido). Pídela al backend.
+#define PKEY          "TU_PKEY"
+
+// --- Identidad del aula / espacio ---
+// DEVICE_ECODIGO es solo el VALOR POR DEFECTO. El ecodigo real se guarda en NVS y
+// se aprovisiona por consola serie con el comando "ecodigo N" (el mismo binario
+// sirve para cualquier aula). El nombre BLE = BLE_NAME_PREFIX + ecodigo.
+#define DEVICE_ECODIGO   2
+#define BLE_NAME_PREFIX  "ESP32_SPP_SERVER_"
+#define NVS_NAMESPACE    "sisca"
+#define NVS_KEY_ECODIGO  "ecodigo"
+
+// --- Bluetooth Low Energy (GATT server) ---
+#define BLE_TAG          "BLE_SERVER"
+#define BLE_SERVICE_UUID         "FFE0"
+#define BLE_CHARACTERISTIC_UUID  "FFE1"
+#define BLE_MTU          247
+#define BLE_REQUIRE_ENCRYPTION 0    // 1 = exigir cifrado/bonding del enlace BLE
+
+// --- Anti-replay local ---
+#define REPLAY_WINDOW_MS 60000
+
+// --- Hardware ---
+#define GPIO_CERRADURA   18
+#define LOCK_OPEN_MS     2000
+
+// --- Robustez ---
+#define WDT_TIMEOUT_S    15
+#define WIFI_RETRY_MS    10000
+
+#endif // CONFIG_H
